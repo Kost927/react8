@@ -24,7 +24,7 @@ function Navigation({isAuth, onLogOut}) {
    ) : ( 
    <ul>
       <li>
-      <h2>For using PhoneBook, you have to register or logIn please!!!</h2>
+      <h2>For using the PhoneBook, you have to register or logIn please!!!</h2>
         <NavLink to="/register">
           Register
         </NavLink>
