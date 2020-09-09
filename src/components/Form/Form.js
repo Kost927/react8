@@ -6,6 +6,7 @@ import { getFilter } from '../../redux/selectors/selectors';
 import Filter from '../Filter/Filter';
 import operation from '../../redux/operations/operations';
 import contactsActions from '../../redux/contacts/contactsActions';
+import ContactsList from '../contactslist/ContactsList';
 
 
 
@@ -75,7 +76,11 @@ class Form extends Component {
 
       <h2>Contacts</h2>
 
-      <Filter />
+{/* console.log('this.props', this.props) */}
+      {this.props.contacts.length > 1 && <Filter />}
+        {!this.props.error && <ContactsList />}
+        {this.props.error && <h2>ERROR ...</h2>}
+      
     </>
   );
 }

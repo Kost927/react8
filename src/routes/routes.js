@@ -29,8 +29,16 @@ export default [
     path: '/contacts',
     label: 'Contacts',
     exact: true,
-    component: lazy(() => import('../pages/Contacts')),
+    component: lazy(() => import('../components/Form/Form')),
     private: true,
     restricted: false,
   },
+  // {
+  //   path: '/logout',
+  //   label: 'Log Out',
+  //   exact: true,
+  //   component: lazy(() => import('../components/authForm/AuthForm')),
+  //   private: true,
+  //   restricted: false,
+  // },
 ];

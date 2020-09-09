@@ -1,29 +1,55 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import authActions from "../../redux/auth/authActions";
 
-function Navigation() {
+function Navigation({isAuth, onLogOut}) {
   return (
-    <ul>
+    <>
+    
+      {isAuth ?
+      
+      ( <ul>
+       <li>
+       <NavLink to="/contacts">
+         Contacts
+       </NavLink>
+     </li>
+     <li>
+     <NavLink onClick={() => onLogOut()} to="/register">
+       Log Out
+     </NavLink>
+   </li>
+   </ul>
+   ) : ( 
+   <ul>
       <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
+      <h2>For using PhoneBook, you have to register or logIn please!!!</h2>
         <NavLink to="/register">
           Register
         </NavLink>
       </li>
       <li>
         <NavLink to="/login">
-          Login
+          Log In
         </NavLink>
-      </li>
-      <li>
-        <NavLink to="/contacts">
-          Contacts
-        </NavLink>
-      </li>
-    </ul>
+      </li> 
+      </ul>)
+    }
+   
+  </>
   );
 }
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  return {
+    isAuth: state.auth.onAuth.token,
+    // onLogOut: state.auth.onAuth
+  };
+};
+
+const mapDispatchToProps = {
+  onLogOut: authActions.logoutSuccess
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

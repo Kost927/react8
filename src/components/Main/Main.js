@@ -12,7 +12,7 @@ function Main() {
     <>
       <Suspense fallback={<h2>loading...</h2>}>
       <Switch>
-          {routes.map(route => route.privat ? 
+          {routes.map(route => route.private ? 
           <PrivateRoutes key={route.label} {...route}/>
           : <PublicRoutes key={route.label} {...route}/>
           )}

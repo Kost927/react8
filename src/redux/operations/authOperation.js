@@ -22,13 +22,13 @@ const methods = {
   
 
   export const login = (userData) => (dispatch) => {
-    dispatch(authActions.loginRequest())
+    dispatch(authActions.registerRequest())
   axios
     .post(methods.signIn, userData)
     .then((res) =>
-      dispatch(authActions.loginSuccess({ token: res.data.idToken, email: res.data.email }))
+      dispatch(authActions.registerSuccess({ token: res.data.idToken, email: res.data.email }))
     )
-    .catch((error) => dispatch(authActions.loginError(error)))
+    .catch((error) => dispatch(authActions.registerError(error)))
 };
   
   
